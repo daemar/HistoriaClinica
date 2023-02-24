@@ -49,8 +49,10 @@
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
-            this.usr = new System.Windows.Forms.Label();
             this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.usr = new System.Windows.Forms.Label();
+            this.AtenciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.modficarContraseñaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -300,6 +302,16 @@
             this.toolStripMenuItem7.Size = new System.Drawing.Size(60, 20);
             this.toolStripMenuItem7.Text = "Reporte";
             // 
+            // configuraciónToolStripMenuItem
+            // 
+            this.configuraciónToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.AtenciónToolStripMenuItem,
+            this.modficarContraseñaToolStripMenuItem});
+            this.configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
+            this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
+            this.configuraciónToolStripMenuItem.Text = "Configuración";
+            this.configuraciónToolStripMenuItem.Click += new System.EventHandler(this.configuraciónToolStripMenuItem_Click);
+            // 
             // usr
             // 
             this.usr.AutoSize = true;
@@ -313,12 +325,18 @@
             this.usr.TabIndex = 30;
             this.usr.Text = "Usuario";
             // 
-            // configuraciónToolStripMenuItem
+            // AtenciónToolStripMenuItem
             // 
-            this.configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
-            this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
-            this.configuraciónToolStripMenuItem.Text = "Configuración";
-            this.configuraciónToolStripMenuItem.Click += new System.EventHandler(this.configuraciónToolStripMenuItem_Click);
+            this.AtenciónToolStripMenuItem.Name = "AtenciónToolStripMenuItem";
+            this.AtenciónToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.AtenciónToolStripMenuItem.Text = "Días de atención";
+            this.AtenciónToolStripMenuItem.Click += new System.EventHandler(this.AtenciónToolStripMenuItem_Click);
+            // 
+            // modficarContraseñaToolStripMenuItem
+            // 
+            this.modficarContraseñaToolStripMenuItem.Name = "modficarContraseñaToolStripMenuItem";
+            this.modficarContraseñaToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.modficarContraseñaToolStripMenuItem.Text = "Modficar contraseña";
             // 
             // formPrincipal
             // 
@@ -384,6 +402,8 @@
         public System.Windows.Forms.MenuStrip menuStrip1;
         public System.Windows.Forms.Label usr;
         private System.Windows.Forms.ToolStripMenuItem configuraciónToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem modficarContraseñaToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem AtenciónToolStripMenuItem;
     }
 }
 

@@ -158,7 +158,12 @@ namespace HistoriaClinica
 
         private void configuraciónToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            formHorarioDoctor form = new formHorarioDoctor();  
+            
+        }
+
+        private void AtenciónToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            formHorarioDoctor form = new formHorarioDoctor();
             form.Show();
         }
     }

@@ -39,6 +39,14 @@ namespace HistoriaClinica
 
                p_frm.usr.Text = "Usuario: "+ loginModel.nombre;
                 valorGlobal= loginModel.nombre + " - "+ loginModel.especialidad;
+                if ((loginModel.especialidad == "Doctor")|| (loginModel.especialidad == "Administrador")) {
+                    p_frm.AtenciónToolStripMenuItem.Visible = true;
+                }
+                else
+                {
+                    p_frm.AtenciónToolStripMenuItem.Visible = false;
+                }
+
                  this.Close();
             }
             else
