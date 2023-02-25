@@ -44,15 +44,16 @@
             this.button7 = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.usr = new System.Windows.Forms.Label();
             this.AtenciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.modficarContraseñaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.usr = new System.Windows.Forms.Label();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.datosDePerfilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -249,7 +250,6 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem1,
-            this.toolStripMenuItem2,
             this.toolStripMenuItem4,
             this.toolStripMenuItem5,
             this.toolStripMenuItem6,
@@ -260,6 +260,7 @@
             this.menuStrip1.Size = new System.Drawing.Size(1259, 24);
             this.menuStrip1.TabIndex = 29;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.Visible = false;
             // 
             // toolStripMenuItem1
             // 
@@ -267,13 +268,6 @@
             this.toolStripMenuItem1.Size = new System.Drawing.Size(64, 20);
             this.toolStripMenuItem1.Text = "Paciente";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(59, 20);
-            this.toolStripMenuItem2.Text = "Usuario";
-            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // toolStripMenuItem4
             // 
@@ -306,11 +300,18 @@
             // 
             this.configuraciónToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.AtenciónToolStripMenuItem,
-            this.modficarContraseñaToolStripMenuItem});
+            this.toolStripMenuItem2});
             this.configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
             this.configuraciónToolStripMenuItem.Size = new System.Drawing.Size(95, 20);
             this.configuraciónToolStripMenuItem.Text = "Configuración";
             this.configuraciónToolStripMenuItem.Click += new System.EventHandler(this.configuraciónToolStripMenuItem_Click);
+            // 
+            // AtenciónToolStripMenuItem
+            // 
+            this.AtenciónToolStripMenuItem.Name = "AtenciónToolStripMenuItem";
+            this.AtenciónToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.AtenciónToolStripMenuItem.Text = "Días de atención";
+            this.AtenciónToolStripMenuItem.Click += new System.EventHandler(this.AtenciónToolStripMenuItem_Click);
             // 
             // usr
             // 
@@ -325,18 +326,28 @@
             this.usr.TabIndex = 30;
             this.usr.Text = "Usuario";
             // 
-            // AtenciónToolStripMenuItem
+            // toolStripMenuItem2
             // 
-            this.AtenciónToolStripMenuItem.Name = "AtenciónToolStripMenuItem";
-            this.AtenciónToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-            this.AtenciónToolStripMenuItem.Text = "Días de atención";
-            this.AtenciónToolStripMenuItem.Click += new System.EventHandler(this.AtenciónToolStripMenuItem_Click);
+            this.toolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem3,
+            this.datosDePerfilToolStripMenuItem});
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem2.Text = "Usuario";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click_1);
             // 
-            // modficarContraseñaToolStripMenuItem
+            // toolStripMenuItem3
             // 
-            this.modficarContraseñaToolStripMenuItem.Name = "modficarContraseñaToolStripMenuItem";
-            this.modficarContraseñaToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-            this.modficarContraseñaToolStripMenuItem.Text = "Modficar contraseña";
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(186, 22);
+            this.toolStripMenuItem3.Text = "Modificar contraseña";
+            // 
+            // datosDePerfilToolStripMenuItem
+            // 
+            this.datosDePerfilToolStripMenuItem.Name = "datosDePerfilToolStripMenuItem";
+            this.datosDePerfilToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.datosDePerfilToolStripMenuItem.Text = "Datos de perfil";
+            this.datosDePerfilToolStripMenuItem.Click += new System.EventHandler(this.datosDePerfilToolStripMenuItem_Click);
             // 
             // formPrincipal
             // 
@@ -393,17 +404,18 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem6;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem7;
         public System.Windows.Forms.Button button2;
         public System.Windows.Forms.MenuStrip menuStrip1;
         public System.Windows.Forms.Label usr;
         private System.Windows.Forms.ToolStripMenuItem configuraciónToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem modficarContraseñaToolStripMenuItem;
         public System.Windows.Forms.ToolStripMenuItem AtenciónToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem datosDePerfilToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
     }
 }
 

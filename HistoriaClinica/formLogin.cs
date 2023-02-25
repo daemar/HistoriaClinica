@@ -36,18 +36,20 @@ namespace HistoriaClinica
             UsuarioModel loginModel = Login.Acceso(textuser.Text, textpwd.Text);
            if (loginModel.nombreusuario!=null)
             {
-
+                p_frm.menuStrip1.Visible = true;
                p_frm.usr.Text = "Usuario: "+ loginModel.nombre;
                 valorGlobal= loginModel.nombre + " - "+ loginModel.especialidad;
-                if ((loginModel.especialidad == "Doctor")|| (loginModel.especialidad == "Administrador")) {
+                if ((loginModel.rol == "Doctor")) {
                     p_frm.AtenciónToolStripMenuItem.Visible = true;
+                    p_frm.toolStripMenuItem5.Visible = true;
                 }
                 else
                 {
                     p_frm.AtenciónToolStripMenuItem.Visible = false;
+                    p_frm.toolStripMenuItem5.Visible = false;
                 }
-
-                 this.Close();
+                iddoctor = loginModel.id;
+                this.Close();
             }
             else
             {
@@ -65,9 +67,19 @@ namespace HistoriaClinica
                 UsuarioModel loginModel = Login.Acceso(textuser.Text, textpwd.Text);
                 if (loginModel.nombreusuario != null)
                 {
-
+                    p_frm.menuStrip1.Visible = true;
                     p_frm.usr.Text = "Usuario: " + loginModel.nombre;
                     valorGlobal = loginModel.nombre + " - " + loginModel.especialidad;
+                    if ((loginModel.rol == "Doctor"))
+                    {
+                        p_frm.AtenciónToolStripMenuItem.Visible = true;
+                        p_frm.toolStripMenuItem5.Visible = true;
+                    }
+                    else
+                    {
+                        p_frm.AtenciónToolStripMenuItem.Visible = false;
+                        p_frm.toolStripMenuItem5.Visible = false;
+                    }
                     iddoctor = loginModel.id;
                     this.Close();
                 }

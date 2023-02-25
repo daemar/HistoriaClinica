@@ -106,7 +106,6 @@ namespace HistoriaClinica
 
         private void btnguarda_Click(object sender, EventArgs e)
         {
-            DateTime factual = DateTime.Today;
             Cita.Add(textDocumento.Text, Picker.Text,cbDoctor.Text);
         }
 

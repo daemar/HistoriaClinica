@@ -39,6 +39,7 @@ namespace HistoriaClinica.Security
                                 ds.id = dr["id"].ToString();
                                 ds.nombre = dr["nombre"].ToString();
                                 ds.especialidad = dr["especialidad"].ToString();
+                                ds.rol = dr["rol"].ToString();
                                 ds.nombreusuario = dr["usr"].ToString() ;
                            
                             }

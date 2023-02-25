@@ -85,8 +85,29 @@ namespace HistoriaClinica
 
         private void formUsuario_Load(object sender, EventArgs e)
         {
+            UsuarioModel usuarioModel = Usuario.Search(formLogin.iddoctor);
+            textDocumento.Text = usuarioModel.id;
+            textNombre.Text = usuarioModel.nombre;
+            textCargo.Text = usuarioModel.cargo;
+            textFNacimiento.Text = usuarioModel.fechanacimiento;
+            textTelefono.Text = usuarioModel.telefono;
+            textCorreo.Text = usuarioModel.correo;
+            cbRol.Text = usuarioModel.rol;
+            cbEspecialidad.Text = usuarioModel.especialidad;
+            DateTime dat = Convert.ToDateTime(usuarioModel.fechanacimiento);
+            DateTime nacimiento = new DateTime(dat.Year, dat.Month, dat.Day);
+            int edad = DateTime.Today.AddTicks(-nacimiento.Ticks).Year - 1;
+
+
+            textEdad.Text = edad.ToString();
+            if (usuarioModel.rol != "Administrador")
+            {
+                btnagregar.Visible=false;
+                textDocumento.ReadOnly=true;   
+            }
             
-            listaUsuario.DataSource = Usuario.Lista();
+
+            /*listaUsuario.DataSource = Usuario.Lista();
             listaUsuario.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             listaUsuario.Columns[0].HeaderText = "Id";
             listaUsuario.Columns[1].HeaderText = "Nombre";
@@ -98,7 +119,7 @@ namespace HistoriaClinica
             listaUsuario.Columns[7].HeaderText = "Usuario";
             listaUsuario.Columns[8].HeaderText = "Password";
             listaUsuario.Columns[9].HeaderText = "Estatus";
-            listaUsuario.Columns[10].HeaderText = "Fecha de Nacimiento";
+            listaUsuario.Columns[10].HeaderText = "Fecha de Nacimiento";*/
         }
 
 

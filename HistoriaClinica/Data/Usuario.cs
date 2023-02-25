@@ -18,7 +18,55 @@ namespace HistoriaClinica.Data
     {
         public Usuario() { }
 
+        public static UsuarioModel Search(string id)
+        {
 
+            CConexion cn = new CConexion();
+            UsuarioModel ds = new UsuarioModel();
+            using (SqlConnection Conexion = new SqlConnection(cn.strinCon("database")))
+            {
+                try
+                {
+                    using (SqlCommand cmd = new SqlCommand("sp_UsuarioId", Conexion))
+                    {
+                        Conexion.Open();
+                        cmd.Parameters.AddWithValue("@idusuario", id);
+
+
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.ExecuteNonQuery();
+
+                        using (var dr = cmd.ExecuteReader())
+                        {
+
+                            if (dr.Read())
+                            {
+                                ds.id = dr["id"].ToString();
+                                ds.nombre = dr["nombre"].ToString();
+                                ds.fechanacimiento = dr["fecha_nacimiento"].ToString();
+                                ds.cargo = dr["cargo"].ToString();
+                                ds.telefono = dr["telefono"].ToString();
+                                ds.correo = dr["correo"].ToString();
+                                ds.rol = dr["rol"].ToString();
+                                ds.especialidad = dr["especialidad"].ToString();
+                                ds.cargo = dr["cargo"].ToString();
+
+
+                            }
+
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error!  " + ex.Message);
+                }
+                {
+
+                }
+            }
+            return ds;
+        }
         public static List<string> ListaDoctor()
         {
             CConexion cn = new CConexion();

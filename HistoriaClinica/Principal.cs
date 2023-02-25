@@ -166,5 +166,21 @@ namespace HistoriaClinica
             formHorarioDoctor form = new formHorarioDoctor();
             form.Show();
         }
+
+        private void toolStripMenuItem2_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void datosDePerfilToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (openForm("formUsuario") == false)
+            {
+                formUsuario form = new formUsuario();
+
+                form.Show();
+            }
+        }
+
     }
 }
