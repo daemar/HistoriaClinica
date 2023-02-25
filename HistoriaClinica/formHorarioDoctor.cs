@@ -28,7 +28,9 @@ namespace HistoriaClinica
             checkdias.Enabled = true;
             lfechafin.Enabled = false;  
             lfechaini.Enabled = false;
-         
+            Fechaini.Text= DateTime.Today.ToString("d");
+            Fechafinal.Text = DateTime.Today.ToString("d");
+
         }
 
         private void radioButton2_Enter(object sender, EventArgs e)
@@ -148,6 +150,22 @@ namespace HistoriaClinica
             {
                 checkdias.SetItemChecked(5, true);
             }
+            if (horarioDoctorModel.fechaini != horarioDoctorModel.fechafin)
+            {
+                radioButton2.Select();
+                Fechaini.Enabled = true;
+                Fechafinal.Enabled = true;
+                checkdias.Enabled = false;
+                lfechafin.Enabled = true;
+                lfechaini.Enabled = true;
+                for (int i = 0; i < checkdias.Items.Count; i++)
+                {
+                    checkdias.SetItemChecked(i, false);
+                }
+                Fechaini.Text = horarioDoctorModel.fechaini;
+                Fechafinal.Text = horarioDoctorModel.fechafin;
+            }
         }
+
     }
 }

@@ -49,8 +49,7 @@ namespace HistoriaClinica.Data
                                 ds.correo = dr["correo"].ToString();
                                 ds.rol = dr["rol"].ToString();
                                 ds.especialidad = dr["especialidad"].ToString();
-                                ds.cargo = dr["cargo"].ToString();
-
+                              
 
                             }
 

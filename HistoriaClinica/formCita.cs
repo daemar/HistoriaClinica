@@ -230,7 +230,15 @@ namespace HistoriaClinica
 
             }
 
-
+            if (horarioDoctorModel.fechaini != horarioDoctorModel.fechafin)
+            {
+                DateTime fini = DateTime.Parse(horarioDoctorModel.fechaini);
+                DateTime ffin = DateTime.Parse(horarioDoctorModel.fechafin);
+                if ((dat.Date >= fini) && (dat.Date <= ffin))
+                {
+                    errorProvider1.SetError(Picker, "Doctor no atenderá en las fechas" + fini.ToString("d") + " al " + ffin.ToString("d"));
+                }
+            }
         }
 
  
