@@ -48,12 +48,16 @@
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
+            this.citaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pacienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.doctorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.consultaMedicaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AtenciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.usr = new System.Windows.Forms.Label();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.datosDePerfilToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.usr = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -292,9 +296,42 @@
             // 
             // toolStripMenuItem7
             // 
+            this.toolStripMenuItem7.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.citaToolStripMenuItem,
+            this.consultaMedicaToolStripMenuItem});
             this.toolStripMenuItem7.Name = "toolStripMenuItem7";
             this.toolStripMenuItem7.Size = new System.Drawing.Size(60, 20);
             this.toolStripMenuItem7.Text = "Reporte";
+            // 
+            // citaToolStripMenuItem
+            // 
+            this.citaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.pacienteToolStripMenuItem,
+            this.doctorToolStripMenuItem});
+            this.citaToolStripMenuItem.Name = "citaToolStripMenuItem";
+            this.citaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.citaToolStripMenuItem.Text = "Cita";
+            // 
+            // pacienteToolStripMenuItem
+            // 
+            this.pacienteToolStripMenuItem.Name = "pacienteToolStripMenuItem";
+            this.pacienteToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.pacienteToolStripMenuItem.Text = "Paciente";
+            this.pacienteToolStripMenuItem.Click += new System.EventHandler(this.pacienteToolStripMenuItem_Click);
+            // 
+            // doctorToolStripMenuItem
+            // 
+            this.doctorToolStripMenuItem.Name = "doctorToolStripMenuItem";
+            this.doctorToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.doctorToolStripMenuItem.Text = "Doctor";
+            this.doctorToolStripMenuItem.Click += new System.EventHandler(this.doctorToolStripMenuItem_Click);
+            // 
+            // consultaMedicaToolStripMenuItem
+            // 
+            this.consultaMedicaToolStripMenuItem.Name = "consultaMedicaToolStripMenuItem";
+            this.consultaMedicaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.consultaMedicaToolStripMenuItem.Text = "Informe médico";
+            this.consultaMedicaToolStripMenuItem.Click += new System.EventHandler(this.consultaMedicaToolStripMenuItem_Click);
             // 
             // configuraciónToolStripMenuItem
             // 
@@ -309,22 +346,9 @@
             // AtenciónToolStripMenuItem
             // 
             this.AtenciónToolStripMenuItem.Name = "AtenciónToolStripMenuItem";
-            this.AtenciónToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.AtenciónToolStripMenuItem.Size = new System.Drawing.Size(161, 22);
             this.AtenciónToolStripMenuItem.Text = "Días de atención";
             this.AtenciónToolStripMenuItem.Click += new System.EventHandler(this.AtenciónToolStripMenuItem_Click);
-            // 
-            // usr
-            // 
-            this.usr.AutoSize = true;
-            this.usr.BackColor = System.Drawing.Color.Transparent;
-            this.usr.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.usr.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.usr.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.usr.Location = new System.Drawing.Point(1091, 644);
-            this.usr.Name = "usr";
-            this.usr.Size = new System.Drawing.Size(50, 13);
-            this.usr.TabIndex = 30;
-            this.usr.Text = "Usuario";
             // 
             // toolStripMenuItem2
             // 
@@ -332,7 +356,7 @@
             this.toolStripMenuItem3,
             this.datosDePerfilToolStripMenuItem});
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(161, 22);
             this.toolStripMenuItem2.Text = "Usuario";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click_1);
             // 
@@ -348,6 +372,19 @@
             this.datosDePerfilToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.datosDePerfilToolStripMenuItem.Text = "Datos de perfil";
             this.datosDePerfilToolStripMenuItem.Click += new System.EventHandler(this.datosDePerfilToolStripMenuItem_Click);
+            // 
+            // usr
+            // 
+            this.usr.AutoSize = true;
+            this.usr.BackColor = System.Drawing.Color.Transparent;
+            this.usr.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.usr.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.usr.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.usr.Location = new System.Drawing.Point(1091, 644);
+            this.usr.Name = "usr";
+            this.usr.Size = new System.Drawing.Size(50, 13);
+            this.usr.TabIndex = 30;
+            this.usr.Text = "Usuario";
             // 
             // formPrincipal
             // 
@@ -416,6 +453,10 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem datosDePerfilToolStripMenuItem;
         public System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
+        private System.Windows.Forms.ToolStripMenuItem citaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pacienteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem doctorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem consultaMedicaToolStripMenuItem;
     }
 }
 

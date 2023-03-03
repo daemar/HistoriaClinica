@@ -1,5 +1,6 @@
 ﻿using HistoriaClinica.Data;
 using HistoriaClinica.Model;
+using HistoriaClinica.Reporte;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,11 +11,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace HistoriaClinica
 {
     public partial class formCita : Form
     {
+        bool valerror=false;
+        public static string iddoctor, idpac, fecha = string.Empty;
         public formCita()
         {
             InitializeComponent();
@@ -34,8 +38,15 @@ namespace HistoriaClinica
         {
             DateTime factual = DateTime.Today;
             Picker.Text = "";
-            cbDoctor.DataSource = Usuario.ListaDoctor();
+            Picker.MinDate = DateTime.Today;
+
+            var dt = Usuario.ListaDoctor();
+            cbDoctor.DisplayMember = "doctesp";
+            cbDoctor.ValueMember = "id";
+            cbDoctor.DataSource = dt;
+            
             cbDoctor.Text = "Selecciona";
+            
         }
 
         private void textDocumento_KeyPress(object sender, KeyPressEventArgs e)
@@ -106,7 +117,15 @@ namespace HistoriaClinica
 
         private void btnguarda_Click(object sender, EventArgs e)
         {
-            Cita.Add(textDocumento.Text, Picker.Text,cbDoctor.Text);
+            if (valerror == false)
+            {
+                Cita.Add(textDocumento.Text, Picker.Text, cbDoctor.SelectedValue.ToString());
+                limpliar();
+            }
+            else
+            {
+                MessageBox.Show("Debe colocar una fecha correcta de atención");
+            }
         }
 
         private void Picker_ValueChanged(object sender, EventArgs e)
@@ -157,17 +176,19 @@ namespace HistoriaClinica
             {
                 
                     errorProvider1.SetError(Picker, "Doctor no atiende los lunes");
+                valerror = true;
 
-                
+
             }
             else
             {
                 if ((horarioDoctorModel.martes == 0)&& (dat.DayOfWeek == DayOfWeek.Tuesday))
                 {
-                   
-                        errorProvider1.SetError(Picker, "Doctor no atiende los martes");
 
-                    
+                    errorProvider1.SetError(Picker, "Doctor no atiende los martes");
+                    valerror = true;
+
+
                 }
                 else
                 {
@@ -175,8 +196,9 @@ namespace HistoriaClinica
                     {
                        
                             errorProvider1.SetError(Picker, "Doctor no atiende los miércoles");
+                        valerror = true;
 
-                       
+
                     }
                     else
                     {
@@ -184,8 +206,9 @@ namespace HistoriaClinica
                         {
                             
                                 errorProvider1.SetError(Picker, "Doctor no atiende los jueves");
+                            valerror = true;
 
-                            
+
                         }
                         else
                         {
@@ -194,7 +217,8 @@ namespace HistoriaClinica
                                
                                     errorProvider1.SetError(Picker, "Doctor no atiende los viernes");
 
-                                
+                                valerror = true;
+
                             }
                             else
                             {
@@ -202,18 +226,20 @@ namespace HistoriaClinica
                                 {
                                    
                                         errorProvider1.SetError(Picker, "Doctor no atiende los sábado");
-                                    
+                                    valerror = true;
                                 }
                                 else
                                 {
                                     if (dat.DayOfWeek == DayOfWeek.Sunday)
                                     {
                                         errorProvider1.SetError(Picker, "Doctor no atiende los domigos");
+                                        valerror = true;
 
                                     }
                                     else
                                     {
                                         errorProvider1.Clear();
+                                        valerror = false;
                                     }
                                 }
 
@@ -236,11 +262,39 @@ namespace HistoriaClinica
                 DateTime ffin = DateTime.Parse(horarioDoctorModel.fechafin);
                 if ((dat.Date >= fini) && (dat.Date <= ffin))
                 {
+                    valerror = true;
                     errorProvider1.SetError(Picker, "Doctor no atenderá en las fechas" + fini.ToString("d") + " al " + ffin.ToString("d"));
                 }
             }
         }
 
- 
+        private void btncerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        private void limpliar()
+        {
+            this.Controls.OfType<System.Windows.Forms.TextBox>().ToList().ForEach(o => o.Text = "");
+            textDocumento.ReadOnly = false;
+            textFNacimiento.Text = string.Empty;    
+            textEdad.Text= string.Empty;    
+            textDocumento.Focus();
+        }
+        private void btncancela_Click(object sender, EventArgs e)
+        {
+            limpliar();
+        }
+
+        private void btnimprime_Click(object sender, EventArgs e)
+        {
+            iddoctor = cbDoctor.SelectedValue.ToString();
+            idpac=textDocumento.Text;
+            fecha=Picker.Text;
+
+            formReportCita form=new formReportCita();
+            form.Show();
+        }
+
+      
     }
 }

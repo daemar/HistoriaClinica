@@ -23,38 +23,37 @@ namespace HistoriaClinica
 
         private void textBox4_Enter(object sender, EventArgs e)
         {
-            Calendar1.Visible = true;
+         
         }
 
         private void textBox4_Click(object sender, EventArgs e)
         {
-            Calendar1.Visible = true;
+        
         }
 
         private void textBox4_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 27)
-            {
-                Calendar1.Visible = false;
-            }
+
         }
 
         private void Calendar1_DateSelected(object sender, DateRangeEventArgs e)
         {
-            textFNacimiento.Text = Calendar1.SelectionRange.Start.Date.ToShortDateString();
-            DateTime dat = Convert.ToDateTime(textFNacimiento.Text);
-            DateTime nacimiento = new DateTime(dat.Year, dat.Month, dat.Day);
-            int edad = DateTime.Today.AddTicks(-nacimiento.Ticks).Year - 1;
 
-
-            textEdad.Text = edad.ToString();
-            Calendar1.Visible = false;
         }
-
+        private void limpiar()
+        {
+            this.Controls.OfType<System.Windows.Forms.TextBox>().ToList().ForEach(o => o.Text = "");
+            textDocumento.ReadOnly = false;
+            textFNacimiento.Text = string.Empty;
+            textEdad.Text = string.Empty;
+            textDocumento.Focus();
+        }
         private void btnagregar_Click(object sender, EventArgs e)
         {
             Paciente.Add(textDocumento.Text, textNombre.Text, cbSexo.Text, textFNacimiento.Text,
                  textTelefono.Text, textDomicilio.Text, textCorreo.Text, textLNacimiento.Text);
+            limpiar();
+          
         }
 
         private void btnmodificar_Click(object sender, EventArgs e)
@@ -125,6 +124,40 @@ namespace HistoriaClinica
 
                 }
             }
+        }
+
+       
+
+        private void btncerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnlimpia_Click(object sender, EventArgs e)
+        {
+            limpiar();
+
+        }
+
+        private void formPaciente_Load(object sender, EventArgs e)
+        {
+            textFNacimiento.MaxDate = DateTime.Today;
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textFNacimiento_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime dat = Convert.ToDateTime(textFNacimiento.Text);
+            DateTime nacimiento = new DateTime(dat.Year, dat.Month, dat.Day);
+            int edad = DateTime.Today.AddTicks(-nacimiento.Ticks).Year - 1;
+
+
+            textEdad.Text = edad.ToString();
         }
     }
 }

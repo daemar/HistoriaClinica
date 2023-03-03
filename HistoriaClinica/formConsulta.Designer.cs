@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formConsulta));
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -52,21 +53,22 @@
             this.textDocumento = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.Picker = new System.Windows.Forms.DateTimePicker();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.ListaConsulta = new System.Windows.Forms.DataGridView();
             this.label6 = new System.Windows.Forms.Label();
             this.textDeriva = new System.Windows.Forms.TextBox();
             this.textPatologia = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btncerrar = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.btncancel = new System.Windows.Forms.Button();
             this.textMedicacion = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
             this.textDiagnostico = new System.Windows.Forms.TextBox();
-            this.btncancel = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ListaConsulta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -150,6 +152,7 @@
             // 
             this.textTalla.BackColor = System.Drawing.SystemColors.Window;
             this.textTalla.Location = new System.Drawing.Point(56, 206);
+            this.textTalla.MaxLength = 54;
             this.textTalla.Name = "textTalla";
             this.textTalla.ReadOnly = true;
             this.textTalla.Size = new System.Drawing.Size(115, 20);
@@ -265,8 +268,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.Picker);
-            this.groupBox1.Controls.Add(this.pictureBox1);
+            this.groupBox1.Controls.Add(this.ListaConsulta);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.textDeriva);
@@ -274,30 +276,31 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(28, 41);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(614, 265);
+            this.groupBox1.Size = new System.Drawing.Size(588, 435);
             this.groupBox1.TabIndex = 98;
             this.groupBox1.TabStop = false;
             // 
-            // Picker
+            // ListaConsulta
             // 
-            this.Picker.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Picker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.Picker.Location = new System.Drawing.Point(328, 48);
-            this.Picker.Name = "Picker";
-            this.Picker.Size = new System.Drawing.Size(126, 20);
-            this.Picker.TabIndex = 118;
-            this.Picker.ValueChanged += new System.EventHandler(this.Picker_ValueChanged);
-            this.Picker.Validating += new System.ComponentModel.CancelEventHandler(this.Picker_Validating);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(508, 11);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 69);
-            this.pictureBox1.TabIndex = 117;
-            this.pictureBox1.TabStop = false;
+            this.ListaConsulta.AllowUserToAddRows = false;
+            this.ListaConsulta.AllowUserToDeleteRows = false;
+            this.ListaConsulta.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            this.ListaConsulta.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
+            this.ListaConsulta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ListaConsulta.DefaultCellStyle = dataGridViewCellStyle1;
+            this.ListaConsulta.Location = new System.Drawing.Point(28, 263);
+            this.ListaConsulta.Name = "ListaConsulta";
+            this.ListaConsulta.ReadOnly = true;
+            this.ListaConsulta.Size = new System.Drawing.Size(545, 157);
+            this.ListaConsulta.TabIndex = 119;
+            this.ListaConsulta.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ListaConsulta_CellContentDoubleClick);
             // 
             // label6
             // 
@@ -329,55 +332,46 @@
             this.textPatologia.Size = new System.Drawing.Size(545, 20);
             this.textPatologia.TabIndex = 100;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(1070, 19);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(120, 86);
+            this.pictureBox1.TabIndex = 117;
+            this.pictureBox1.TabStop = false;
+            // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.button2);
-            this.groupBox2.Controls.Add(this.textMedicacion);
-            this.groupBox2.Controls.Add(this.label10);
+            this.groupBox2.Controls.Add(this.pictureBox1);
+            this.groupBox2.Controls.Add(this.btncerrar);
             this.groupBox2.Controls.Add(this.button3);
-            this.groupBox2.Controls.Add(this.textDiagnostico);
+            this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.btncancel);
             this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(18, 13);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(636, 543);
+            this.groupBox2.Size = new System.Drawing.Size(1216, 543);
             this.groupBox2.TabIndex = 112;
             this.groupBox2.TabStop = false;
             // 
-            // button2
+            // btncerrar
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(402, 484);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 117;
-            this.button2.Text = "Cancelar";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // textMedicacion
-            // 
-            this.textMedicacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textMedicacion.Location = new System.Drawing.Point(338, 324);
-            this.textMedicacion.Multiline = true;
-            this.textMedicacion.Name = "textMedicacion";
-            this.textMedicacion.Size = new System.Drawing.Size(245, 139);
-            this.textMedicacion.TabIndex = 116;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(338, 306);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(62, 13);
-            this.label10.TabIndex = 115;
-            this.label10.Text = "Medicación";
+            this.btncerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btncerrar.Location = new System.Drawing.Point(671, 484);
+            this.btncerrar.Name = "btncerrar";
+            this.btncerrar.Size = new System.Drawing.Size(75, 23);
+            this.btncerrar.TabIndex = 117;
+            this.btncerrar.Text = "Cerrar";
+            this.btncerrar.UseVisualStyleBackColor = true;
+            this.btncerrar.Click += new System.EventHandler(this.btncerrar_Click_1);
             // 
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(157, 484);
+            this.button3.Location = new System.Drawing.Point(426, 484);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 67;
@@ -386,31 +380,50 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // textDiagnostico
-            // 
-            this.textDiagnostico.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textDiagnostico.Location = new System.Drawing.Point(38, 324);
-            this.textDiagnostico.Multiline = true;
-            this.textDiagnostico.Name = "textDiagnostico";
-            this.textDiagnostico.Size = new System.Drawing.Size(255, 139);
-            this.textDiagnostico.TabIndex = 114;
-            // 
             // btncancel
             // 
             this.btncancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btncancel.Location = new System.Drawing.Point(280, 484);
+            this.btncancel.Location = new System.Drawing.Point(549, 484);
             this.btncancel.Name = "btncancel";
             this.btncancel.Size = new System.Drawing.Size(75, 23);
             this.btncancel.TabIndex = 62;
-            this.btncancel.Text = "Cancelar";
+            this.btncancel.Text = "Limpiar";
             this.btncancel.UseVisualStyleBackColor = true;
             this.btncancel.Click += new System.EventHandler(this.btncancel_Click);
+            // 
+            // textMedicacion
+            // 
+            this.textMedicacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textMedicacion.Location = new System.Drawing.Point(631, 322);
+            this.textMedicacion.Multiline = true;
+            this.textMedicacion.Name = "textMedicacion";
+            this.textMedicacion.Size = new System.Drawing.Size(588, 139);
+            this.textMedicacion.TabIndex = 116;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(610, 291);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(62, 13);
+            this.label10.TabIndex = 115;
+            this.label10.Text = "Medicación";
+            // 
+            // textDiagnostico
+            // 
+            this.textDiagnostico.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textDiagnostico.Location = new System.Drawing.Point(633, 142);
+            this.textDiagnostico.Multiline = true;
+            this.textDiagnostico.Name = "textDiagnostico";
+            this.textDiagnostico.Size = new System.Drawing.Size(586, 139);
+            this.textDiagnostico.TabIndex = 114;
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(35, 306);
+            this.label14.Location = new System.Drawing.Point(610, 111);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(63, 13);
             this.label14.TabIndex = 113;
@@ -425,11 +438,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(673, 568);
+            this.ClientSize = new System.Drawing.Size(1246, 568);
             this.Controls.Add(this.label8);
+            this.Controls.Add(this.textMedicacion);
             this.Controls.Add(this.textPresion);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.textPeso);
+            this.Controls.Add(this.textDiagnostico);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.textTemperatura);
             this.Controls.Add(this.label12);
@@ -456,6 +471,7 @@
             this.Load += new System.EventHandler(this.formConsulta_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ListaConsulta)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -500,8 +516,8 @@
         private System.Windows.Forms.TextBox textDeriva;
         private System.Windows.Forms.TextBox textPatologia;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.DateTimePicker Picker;
+        private System.Windows.Forms.Button btncerrar;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.DataGridView ListaConsulta;
     }
 }

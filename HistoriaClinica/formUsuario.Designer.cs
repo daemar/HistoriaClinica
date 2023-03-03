@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formUsuario));
-            this.listaUsuario = new System.Windows.Forms.DataGridView();
             this.button4 = new System.Windows.Forms.Button();
             this.btnmodificar = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
@@ -45,7 +44,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.textEdad = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textFNacimiento = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.textNombre = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -54,33 +52,23 @@
             this.cbRol = new System.Windows.Forms.ComboBox();
             this.cbEspecialidad = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.Calendar1 = new System.Windows.Forms.MonthCalendar();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.textusuario = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
+            this.listaUsuario = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.textpwd = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.listaUsuario)).BeginInit();
+            this.textFNacimiento = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listaUsuario)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // listaUsuario
-            // 
-            this.listaUsuario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.listaUsuario.Location = new System.Drawing.Point(11, 281);
-            this.listaUsuario.Name = "listaUsuario";
-            this.listaUsuario.ReadOnly = true;
-            this.listaUsuario.Size = new System.Drawing.Size(67, 248);
-            this.listaUsuario.TabIndex = 43;
-            this.listaUsuario.Visible = false;
-            this.listaUsuario.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaUsuario_CellContentClick);
             // 
             // button4
             // 
@@ -205,16 +193,6 @@
             this.label3.TabIndex = 28;
             this.label3.Text = "Edad";
             // 
-            // textFNacimiento
-            // 
-            this.textFNacimiento.Location = new System.Drawing.Point(415, 67);
-            this.textFNacimiento.Name = "textFNacimiento";
-            this.textFNacimiento.Size = new System.Drawing.Size(176, 20);
-            this.textFNacimiento.TabIndex = 27;
-            this.textFNacimiento.Click += new System.EventHandler(this.textBox4_Click);
-            this.textFNacimiento.Enter += new System.EventHandler(this.textBox4_Enter);
-            this.textFNacimiento.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox4_KeyPress);
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -295,19 +273,9 @@
             this.label10.TabIndex = 46;
             this.label10.Text = "Especialidad";
             // 
-            // Calendar1
-            // 
-            this.Calendar1.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.Calendar1.Location = new System.Drawing.Point(415, 88);
-            this.Calendar1.MaxDate = new System.DateTime(2023, 2, 14, 0, 0, 0, 0);
-            this.Calendar1.MinDate = new System.DateTime(1920, 1, 1, 0, 0, 0, 0);
-            this.Calendar1.Name = "Calendar1";
-            this.Calendar1.TabIndex = 48;
-            this.Calendar1.Visible = false;
-            this.Calendar1.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.Calendar1_DateSelected);
-            // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.textFNacimiento);
             this.groupBox1.Controls.Add(this.pictureBox1);
             this.groupBox1.Controls.Add(this.textusuario);
             this.groupBox1.Controls.Add(this.label11);
@@ -349,6 +317,17 @@
             this.label11.Size = new System.Drawing.Size(98, 13);
             this.label11.TabIndex = 44;
             this.label11.Text = "Nombre de Usuario";
+            // 
+            // listaUsuario
+            // 
+            this.listaUsuario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.listaUsuario.Location = new System.Drawing.Point(11, 281);
+            this.listaUsuario.Name = "listaUsuario";
+            this.listaUsuario.ReadOnly = true;
+            this.listaUsuario.Size = new System.Drawing.Size(67, 248);
+            this.listaUsuario.TabIndex = 43;
+            this.listaUsuario.Visible = false;
+            this.listaUsuario.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listaUsuario_CellContentClick);
             // 
             // groupBox2
             // 
@@ -393,13 +372,21 @@
             this.button5.Text = "Validar";
             this.button5.UseVisualStyleBackColor = true;
             // 
+            // textFNacimiento
+            // 
+            this.textFNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.textFNacimiento.Location = new System.Drawing.Point(410, 47);
+            this.textFNacimiento.Name = "textFNacimiento";
+            this.textFNacimiento.Size = new System.Drawing.Size(175, 20);
+            this.textFNacimiento.TabIndex = 50;
+            this.textFNacimiento.ValueChanged += new System.EventHandler(this.textFNacimiento_ValueChanged);
+            // 
             // formUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(667, 371);
-            this.Controls.Add(this.Calendar1);
             this.Controls.Add(this.cbEspecialidad);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.cbRol);
@@ -413,7 +400,6 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.textEdad);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textFNacimiento);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.textNombre);
             this.Controls.Add(this.label2);
@@ -426,10 +412,10 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Medic Control - Usuario";
             this.Load += new System.EventHandler(this.formUsuario_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.listaUsuario)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listaUsuario)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
@@ -439,8 +425,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView listaUsuario;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button btnmodificar;
         private System.Windows.Forms.Label label8;
@@ -455,7 +439,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textEdad;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textFNacimiento;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textNombre;
         private System.Windows.Forms.Label label2;
@@ -465,7 +448,6 @@
         private System.Windows.Forms.ComboBox cbRol;
         private System.Windows.Forms.ComboBox cbEspecialidad;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.MonthCalendar Calendar1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox textpwd;
         private System.Windows.Forms.Label label12;
@@ -474,5 +456,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.DataGridView listaUsuario;
+        private System.Windows.Forms.DateTimePicker textFNacimiento;
     }
 }

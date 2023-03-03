@@ -32,31 +32,22 @@ namespace HistoriaClinica
 
         private void textBox4_Click(object sender, EventArgs e)
         {
-            Calendar1.Visible = true;
+          
         }
 
         private void textBox4_Enter(object sender, EventArgs e)
         {
-            Calendar1.Visible = true;
+           
         }
 
         private void textBox4_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(e.KeyChar== 27) {
-                Calendar1.Visible = false;
-            }
+
         }
 
         private void Calendar1_DateSelected(object sender, DateRangeEventArgs e)
         {
-            textFNacimiento.Text = Calendar1.SelectionRange.Start.Date.ToShortDateString();
-            DateTime dat = Convert.ToDateTime(textFNacimiento.Text);
-            DateTime nacimiento = new DateTime(dat.Year, dat.Month, dat.Day);
-            int edad = DateTime.Today.AddTicks(-nacimiento.Ticks).Year - 1;
 
-
-            textEdad.Text = edad.ToString();
-            Calendar1.Visible = false;
         }
 
         private void comboBox1_Enter(object sender, EventArgs e)
@@ -85,6 +76,8 @@ namespace HistoriaClinica
 
         private void formUsuario_Load(object sender, EventArgs e)
         {
+            textFNacimiento.MaxDate = DateTime.Today;
+
             UsuarioModel usuarioModel = Usuario.Search(formLogin.iddoctor);
             textDocumento.Text = usuarioModel.id;
             textNombre.Text = usuarioModel.nombre;
@@ -105,7 +98,6 @@ namespace HistoriaClinica
                 btnagregar.Visible=false;
                 textDocumento.ReadOnly=true;   
             }
-            
 
             /*listaUsuario.DataSource = Usuario.Lista();
             listaUsuario.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -181,6 +173,16 @@ namespace HistoriaClinica
         private void button4_Click(object sender, EventArgs e)
         {
             limpliar();
+        }
+
+        private void textFNacimiento_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime dat = Convert.ToDateTime(textFNacimiento.Text);
+            DateTime nacimiento = new DateTime(dat.Year, dat.Month, dat.Day);
+            int edad = DateTime.Today.AddTicks(-nacimiento.Ticks).Year - 1;
+
+
+            textEdad.Text = edad.ToString();
         }
     }
 }

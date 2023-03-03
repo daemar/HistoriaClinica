@@ -1,5 +1,6 @@
 ﻿using HistoriaClinica.Data;
 using HistoriaClinica.Model;
+using HistoriaClinica.Reporte;
 using HistoriaClinica.Security;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace HistoriaClinica
 {
     public partial class formConsulta : Form
     {
+        public static string idpaciente, idoctor, fecha;
         public formConsulta()
         {
             InitializeComponent();
@@ -30,35 +32,56 @@ namespace HistoriaClinica
                 PacienteModel pacienteModel=Paciente.SearchModel(textDocumento.Text);
                 DateTime factual = DateTime.Today;
                 string ftoday = factual.ToString("d");
-                TriajeModel triajeModel = Triaje.SearchModel(textDocumento.Text, ftoday, formLogin.valorGlobal);
-                
-                if (triajeModel.patologia != null)
+                TriajeModel triajeModel = Triaje.SearchModel(textDocumento.Text, ftoday, formLogin.iddoctor);
+                if (Cita.TieneCita(textDocumento.Text, ftoday) == true)
                 {
+                    if (triajeModel.patologia != null)
+                    {
 
-                    //Datos Paciente
-                    textNombre.Text = pacienteModel.nombre;
-                    textSexo.Text = pacienteModel.sexo;
-                    textFNacimiento.Text = pacienteModel.fechanacimiento;
-                    DateTime dat = Convert.ToDateTime(textFNacimiento.Text);
-                    DateTime nacimiento = new DateTime(dat.Year, dat.Month, dat.Day);
-                    int edad = DateTime.Today.AddTicks(-nacimiento.Ticks).Year - 1;
-                    textEdad.Text = edad.ToString();
+                        //Datos Paciente
+                        textNombre.Text = pacienteModel.nombre;
+                        textSexo.Text = pacienteModel.sexo;
+                        textFNacimiento.Text = pacienteModel.fechanacimiento;
+                        DateTime dat = Convert.ToDateTime(textFNacimiento.Text);
+                        DateTime nacimiento = new DateTime(dat.Year, dat.Month, dat.Day);
+                        int edad = DateTime.Today.AddTicks(-nacimiento.Ticks).Year - 1;
+                        textEdad.Text = edad.ToString();
 
-                    //Datos Triaje
+                        //Datos Triaje
 
-                    textTalla.Text = triajeModel.talla;
-                    textTemperatura.Text = triajeModel.temperatura;
-                    textPeso.Text = triajeModel.peso;
-                    textPresion.Text=triajeModel.presionarterial;
-                    textPatologia.Text=triajeModel.patologia;
-                    
-                    textDocumento.ReadOnly= true;
+                        textTalla.Text = triajeModel.talla;
+                        textTemperatura.Text = triajeModel.temperatura;
+                        textPeso.Text = triajeModel.peso;
+                        textPresion.Text = triajeModel.presionarterial;
+                        textPatologia.Text = triajeModel.patologia;
+
+                        ListaConsulta.DataSource = ConsultaMedica.Lista(textDocumento.Text);
+
+                        ListaConsulta.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                        ListaConsulta.Columns[0].HeaderText = "Fecha Atención";
+                        ListaConsulta.Columns[1].HeaderText = "Talla";
+                        ListaConsulta.Columns[2].HeaderText = "Temperatura";
+                        ListaConsulta.Columns[3].HeaderText = "Peso";
+                        ListaConsulta.Columns[4].HeaderText = "Presión Arterial";
+                        ListaConsulta.Columns[5].HeaderText = "Patológia";
+                        ListaConsulta.Columns[6].HeaderText = "Diágnostico";
+                        ListaConsulta.Columns[7].HeaderText = "Medicación";
+                        ListaConsulta.Columns[8].HeaderText = "Doctor";
+                        DataGridViewColumn Column = ListaConsulta.Columns[9];
+                        Column.Visible = false;
+                        textDocumento.ReadOnly = true;
+                    }
+
+                    else
+                    {
+                        MessageBox.Show("Paciente no tiene cita con usted hoy", "Información");
+
+                    }
+
                 }
-
                 else
                 {
-                    MessageBox.Show("Paciente no tiene cita con usted hoy", "Información");
-               
+                    MessageBox.Show("Paciente no tiene cita para hoy", "Información");
                 }
 
             }
@@ -86,7 +109,7 @@ namespace HistoriaClinica
                 && (textPeso.Text != string.Empty) && (textPresion.Text != string.Empty)
                 && (textPatologia.Text != string.Empty)) {
                 DateTime factual = DateTime.Today;
-                ConsultaMedica.Add(textDocumento.Text,formLogin.valorGlobal,factual.ToString("d"),textDiagnostico.Text,textMedicacion.Text );
+                ConsultaMedica.Add(textDocumento.Text,formLogin.iddoctor,factual.ToString("d"),textDiagnostico.Text,textMedicacion.Text );
                 limpliar();
             }
             else {
@@ -99,68 +122,27 @@ namespace HistoriaClinica
             this.Close();
         }
 
-        private void Picker_Validating(object sender, CancelEventArgs e)
-        {
-            DateTime dat = Picker.Value.Date;
-            if (dat.DayOfWeek == DayOfWeek.Sunday)
-            {
-                e.Cancel = true;
-            }
-            if (dat.DayOfWeek == DayOfWeek.Saturday)
-            {
-                e.Cancel = true;
-            }
-
-            if (dat.DayOfWeek == DayOfWeek.Monday)
-            {
-                e.Cancel = true;
-            }
-        }
-
-        private void Picker_ValueChanged(object sender, EventArgs e)
-        {
-            DateTime dat = Picker.Value.Date;
-            if (dat.DayOfWeek == DayOfWeek.Sunday)
-            {
-                errorProvider1.SetError(Picker, "Doctor no atiende los domigos.");
-                            
-            }
-            else
-            {
-                if (dat.DayOfWeek == DayOfWeek.Saturday)
-                {
-                    errorProvider1.SetError(Picker, "Doctor no atiende los sábados.");
-                }
-                else
-                {
-                    if (dat.DayOfWeek == DayOfWeek.Monday)
-                    {
-                        errorProvider1.SetError(Picker, "Doctor no atiende los lunes.");
-                    }
-                    else
-                    {
-                        if ((dat.Month==3) && (dat.Day >= 3) && (dat.Day <= 17))
-                        {
-                            
-                                errorProvider1.SetError(Picker, "Doctor ESTE ES");
-                            
-                        }
-                        else
-                        {
-                            errorProvider1.Clear();
-                        }
-                    }
-                    
-                }
-
-               
-            }
-            
-        }
-
         private void formConsulta_Load(object sender, EventArgs e)
         {
-           
+            ListaConsulta.ColumnHeadersDefaultCellStyle.BackColor = ColorTranslator.FromHtml("#bfdbff");
+            ListaConsulta.EnableHeadersVisualStyles = false;
         }
+
+        private void btncerrar_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+
+        private void ListaConsulta_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            idpaciente=textDocumento.Text;
+            idoctor = ListaConsulta.CurrentRow.Cells[9].Value.ToString();
+            fecha = ListaConsulta.CurrentRow.Cells[0].Value.ToString();
+            formReportConsultaPaciente form =new formReportConsultaPaciente();
+            form.Show();
+        }
+
+
     }
 }

@@ -8,6 +8,12 @@ begin
 	select * from usuario
 end
 
+create procedure sp_ListaDoctor
+as
+begin
+	select nombre +' - '+especialidad as doctesp,id from usuario where rol='Doctor'
+end
+
 create procedure sp_UsuarioId(
 @idusuario varchar(50))
 as
@@ -142,7 +148,7 @@ end
 create procedure sp_AgregarTriaje(
 @idpaciente varchar(50),
 @talla varchar(10),
-@temperatura varchar(50),
+@temperatura varchar(50)
 @peso varchar(10),
 @presionarterial varchar(50),
 @patologia varchar(50),
@@ -164,7 +170,7 @@ create procedure sp_BuscaTriajeActual(
 )
 as 
 begin
-	select * from triaje as t,usuario as u where t.id_paciente=@idpaciente  and u.id=@idpaciente and fecha_actual=@fechaactual and derivar=@derivar
+	select * from triaje as t,usuario as u where t.id_paciente=@idpaciente  and u.id=derivar and fecha_actual=@fechaactual and derivar=@derivar
 end
 
 
@@ -184,6 +190,30 @@ begin
 	(@idpaciente, @doctor, @fecha,@diagnostico, @medicacion)
 end
 
+
+create procedure sp_ListarConsultaPaciente(
+@idpaciente varchar(50)
+)
+as 
+begin
+	select c.fecha, t.talla, t.temperatura,t.peso, t.presion_arterial, t.patologia, c.diagnostico,medicacion, u.nombre,u.id as iddoctor from triaje as t,consulta as c, usuario as u where t.id_paciente=@idpaciente  and  t.fecha_actual=c.fecha and c.doctor=t.derivar and u.id=c.doctor
+end
+
+
+create procedure sp_ConsultaPacienteFecha(
+@idpaciente varchar(50),
+@iddoctor varchar(50),
+@fecha varchar(50)
+)
+as 
+begin
+	select c.fecha, t.talla, t.temperatura,t.peso, t.presion_arterial, t.patologia, c.diagnostico,medicacion, u.nombre as nombdoctor, p.nombre as nombpaciente, p.id as idpaciente, p.sexo, p.fecha_nacimiento from triaje as t,consulta as c, usuario as u,paciente as p where c.id_paciente=@idpaciente and t.id_paciente=c.id_paciente and p.id=c.id_paciente   and c.fecha=@fecha and  t.fecha_actual=c.fecha and c.doctor=t.derivar and u.id=c.doctor and c.doctor=@iddoctor
+end
+
+
+select c.fecha, t.talla, t.temperatura,t.peso, t.presion_arterial, t.patologia, c.diagnostico,medicacion, u.nombre as nombdoctor, p.nombre as nombpaciente, p.sexo, p.fecha_nacimiento from triaje as t,consulta as c, usuario as u,paciente as p where c.id_paciente=@idpaciente and t.id_paciente=c.id_paciente and p.id=c.id_paciente   and c.fecha=@fecha and  t.fecha_actual=c.fecha and c.doctor=t.derivar and u.id=c.doctor and c.doctor=@iddoctor
+
+
 ----! CITA !----
 
 create procedure sp_AgregarCita(
@@ -197,6 +227,15 @@ begin
 	values
 	(@idpaciente, @fecha, @doctor)
 end
+create procedure sp_ConsultaOrdenCita(
+@idpaciente varchar(50),
+@fecha varchar(50)
+)
+as
+begin
+	select * from 
+	cita where cita.id_paciente=@idpaciente  and fecha=convert(date,@fecha)
+end
 
 create procedure sp_ConsultaCita(
 @idpaciente varchar(50),
@@ -205,9 +244,54 @@ create procedure sp_ConsultaCita(
 )
 as
 begin
-	select * from cita where id_paciente=@idpaciente and fecha=@fecha and doctor=@doctor
+	select paciente.id as idpaciente, paciente.nombre as nombpac, sexo, paciente.fecha_nacimiento, fecha,usuario.nombre as nombdoctor, usuario.especialidad  from 
+	cita,usuario,paciente where cita.id_paciente=@idpaciente and paciente.id=@idpaciente and usuario.id=@doctor and cita.doctor=@doctor and fecha=@fecha and doctor=@doctor
 end
 
+	select paciente.id as idpaciente, paciente.nombre as nombpac, sexo, paciente.fecha_nacimiento, fecha,usuario.nombre as nombdoctor, usuario.especialidad  from 
+	cita,usuario,paciente where cita.id_paciente='2323' and paciente.id='2323' and usuario.id=doctor and (fecha=convert(date,'01-03-2023'))
+
+
+
+create procedure sp_ConsultaCitaPaciente(
+@idpaciente varchar(50),
+@fechaini varchar(50),
+@fechafin varchar(50)
+)
+as
+begin
+	set dateformat dmy
+	select cita.id,paciente.id as idpaciente, paciente.nombre as nombpac, sexo, paciente.fecha_nacimiento, fecha,usuario.nombre as nombdoctor, usuario.especialidad  from 
+	cita,usuario,paciente where cita.id_paciente=@idpaciente and paciente.id=@idpaciente and usuario.id=cita.doctor and (fecha>=convert(date,@fechaini) and fecha<= convert(date,@fechafin))
+end
+
+
+create procedure sp_ConsultaCitaPDoctor(
+@iddoctor varchar(50),
+@fechaini varchar(50),
+@fechafin varchar(50)
+)
+as
+begin
+	set dateformat dmy
+	select cita.id,paciente.id as idpaciente, paciente.nombre as nombpac, sexo, paciente.fecha_nacimiento, fecha,usuario.nombre as nombdoctor, usuario.especialidad  from 
+	cita,usuario,paciente where cita.doctor=@iddoctor and usuario.id=@iddoctor and paciente.id=cita.id_paciente and (fecha>=convert(date,@fechaini) and fecha<= convert(date,@fechafin))
+end
+
+
+
+	set dateformat dmy
+	select cita.id,paciente.id as idpaciente, paciente.nombre as nombpac, sexo, paciente.fecha_nacimiento, fecha,usuario.nombre as nombdoctor, usuario.especialidad  from 
+	cita,usuario,paciente where cita.doctor='123' and usuario.id='123' and paciente.id=cita.id_paciente and (fecha>=convert(date,'01-02-2023') and fecha<= convert(date,'01-03-2023'))
+
+
+set dateformat dmy
+
+	select cita.id, paciente.id as idpaciente, paciente.nombre as nombpac, sexo, paciente.fecha_nacimiento, cita.fecha,usuario.nombre as nombdoctor, usuario.especialidad  from 
+	cita,usuario,paciente where cita.id_paciente='4321' and paciente.id='4321'  and usuario.id=cita.doctor and (fecha>= convert(date,'01-02-2023') and fecha<=convert(date,'01-03-2023'))
+
+select paciente.id as idpaciente, paciente.nombre as nombpac, sexo, paciente.fecha_nacimiento, fecha,usuario.nombre as nombdoctor, usuario.especialidad from 
+	cita,usuario,paciente where cita.id_paciente='4321' and paciente.id='4321' and usuario.id='123' and cita.doctor='123' and  cita.fecha='01-03-2023'
 ----! HORARIO DOCTOR !----
 
 create procedure sp_AgregarHorario(

@@ -33,6 +33,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1537.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1537.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1537.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1537.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1537.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -79,6 +97,24 @@
     <Compile Include="formLogin.Designer.cs">
       <DependentUpon>formLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="formReportCitaDoctorData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formReportCitaDoctorData.Designer.cs">
+      <DependentUpon>formReportCitaDoctorData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formReportCitaPacienteData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formReportCitaPacienteData.Designer.cs">
+      <DependentUpon>formReportCitaPacienteData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="formRptConsultaPacienteData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="formRptConsultaPacienteData.Designer.cs">
+      <DependentUpon>formRptConsultaPacienteData.cs</DependentUpon>
+    </Compile>
     <Compile Include="formTriaje.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +127,7 @@
     <Compile Include="formUsuario.Designer.cs">
       <DependentUpon>formUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\CitaModel.cs" />
     <Compile Include="Model\HorarioDoctorModel.cs" />
     <Compile Include="Model\PacienteModel.cs" />
     <Compile Include="Model\TriajeModel.cs" />
@@ -109,8 +146,53 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RCitaDoctor.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RCitaDoctor.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="RCitaPaciente.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RCitaPaciente.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="RConsultaPacienteFecha.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RConsultaPacienteFecha.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ReportCita.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReportCita.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reporte\formReportCita.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reporte\formReportCita.Designer.cs">
+      <DependentUpon>formReportCita.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reporte\formReportCitaDoctor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reporte\formReportCitaDoctor.Designer.cs">
+      <DependentUpon>formReportCitaDoctor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reporte\formReportCitaPaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reporte\formReportCitaPaciente.Designer.cs">
+      <DependentUpon>formReportCitaPaciente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reporte\formReportConsultaPaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reporte\formReportConsultaPaciente.Designer.cs">
+      <DependentUpon>formReportConsultaPaciente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Security\Encrypt.cs" />
     <Compile Include="Security\Login.cs" />
+    <Compile Include="SqlServerTypes\Loader.cs" />
     <EmbeddedResource Include="formCita.resx">
       <DependentUpon>formCita.cs</DependentUpon>
     </EmbeddedResource>
@@ -122,6 +204,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="formLogin.resx">
       <DependentUpon>formLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formReportCitaDoctorData.resx">
+      <DependentUpon>formReportCitaDoctorData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formReportCitaPacienteData.resx">
+      <DependentUpon>formReportCitaPacienteData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="formRptConsultaPacienteData.resx">
+      <DependentUpon>formRptConsultaPacienteData.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="formTriaje.resx">
       <DependentUpon>formTriaje.cs</DependentUpon>
@@ -145,9 +236,26 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Reporte\formReportCitaDoctor.resx">
+      <DependentUpon>formReportCitaDoctor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reporte\formReportConsultaPaciente.resx">
+      <DependentUpon>formReportConsultaPaciente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reporte\ReportCitaDoctor.rdlc" />
+    <EmbeddedResource Include="Reporte\formReportCita.resx">
+      <DependentUpon>formReportCita.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reporte\formReportCitaPaciente.resx">
+      <DependentUpon>formReportCitaPaciente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reporte\ReportCita.rdlc" />
+    <EmbeddedResource Include="Reporte\ReportCitaPaciente.rdlc" />
+    <EmbeddedResource Include="Reporte\ReportConsultaPaciente.rdlc" />
     <None Include="..\.editorconfig">
       <Link>.editorconfig</Link>
     </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -157,12 +265,74 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="RCitaDoctor.xsc">
+      <DependentUpon>RCitaDoctor.xsd</DependentUpon>
+    </None>
+    <None Include="RCitaDoctor.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>RCitaDoctor.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="RCitaDoctor.xss">
+      <DependentUpon>RCitaDoctor.xsd</DependentUpon>
+    </None>
+    <None Include="RCitaPaciente.xsc">
+      <DependentUpon>RCitaPaciente.xsd</DependentUpon>
+    </None>
+    <None Include="RCitaPaciente.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>RCitaPaciente.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="RCitaPaciente.xss">
+      <DependentUpon>RCitaPaciente.xsd</DependentUpon>
+    </None>
+    <None Include="RConsultaPacienteFecha.xsc">
+      <DependentUpon>RConsultaPacienteFecha.xsd</DependentUpon>
+    </None>
+    <None Include="RConsultaPacienteFecha.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>RConsultaPacienteFecha.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="RConsultaPacienteFecha.xss">
+      <DependentUpon>RConsultaPacienteFecha.xsd</DependentUpon>
+    </None>
+    <None Include="ReportCita.xsc">
+      <DependentUpon>ReportCita.xsd</DependentUpon>
+    </None>
+    <None Include="ReportCita.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ReportCita.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ReportCita.xss">
+      <DependentUpon>ReportCita.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

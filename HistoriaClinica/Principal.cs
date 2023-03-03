@@ -182,5 +182,22 @@ namespace HistoriaClinica
             }
         }
 
+        private void pacienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            formReportCitaPacienteData form = new formReportCitaPacienteData();
+            form.Show();
+        }
+
+        private void doctorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            formReportCitaDoctorData form= new formReportCitaDoctorData();  
+            form.Show();
+        }
+
+        private void consultaMedicaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            formRptConsultaPacienteData form = new formRptConsultaPacienteData();
+            form.Show();
+        }
     }
 }

@@ -66,31 +66,25 @@ namespace HistoriaClinica.Data
             }
             return ds;
         }
-        public static List<string> ListaDoctor()
+        public static DataTable ListaDoctor()
         {
             CConexion cn = new CConexion();
-            List<string> _lista = new List<string>();
+            DataTable _lista = new DataTable();
             using (SqlConnection Conexion = new SqlConnection(cn.strinCon("database")))
             {
                 try
                 {
                     Conexion.Open();
-                    using (SqlCommand cmd = new SqlCommand("sp_ListaUsuario", Conexion))
+                    using (SqlCommand cmd = new SqlCommand("sp_ListaDoctor", Conexion))
                     {
 
                         cmd.CommandType = CommandType.StoredProcedure;
 
-                        using (var dr = cmd.ExecuteReader())
-                        {
+                       
 
-                            while (dr.Read())
-                            {
-                                if (dr["rol"].ToString()=="Doctor")
-                                _lista.Add(
-                                    dr["nombre"].ToString()+ " - "+dr["especialidad"].ToString()
-                                );
-                            }
-                        }
+                            SqlDataAdapter da = new SqlDataAdapter(cmd);
+                            da.Fill(_lista);
+                        
                     }
                 }
                 
@@ -124,9 +118,6 @@ namespace HistoriaClinica.Data
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
-                }
-                {
-
                 }
             }
             return ds;

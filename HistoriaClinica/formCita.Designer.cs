@@ -52,6 +52,7 @@
             this.Picker = new System.Windows.Forms.DateTimePicker();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btncerrar = new System.Windows.Forms.Button();
+            this.btnimprime = new System.Windows.Forms.Button();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -209,17 +210,18 @@
             // btncancela
             // 
             this.btncancela.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btncancela.Location = new System.Drawing.Point(489, 160);
+            this.btncancela.Location = new System.Drawing.Point(271, 255);
             this.btncancela.Name = "btncancela";
             this.btncancela.Size = new System.Drawing.Size(75, 23);
             this.btncancela.TabIndex = 97;
-            this.btncancela.Text = "Cancelar";
+            this.btncancela.Text = "Limpiar";
             this.btncancela.UseVisualStyleBackColor = true;
+            this.btncancela.Click += new System.EventHandler(this.btncancela_Click);
             // 
             // btnguarda
             // 
             this.btnguarda.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnguarda.Location = new System.Drawing.Point(403, 160);
+            this.btnguarda.Location = new System.Drawing.Point(185, 255);
             this.btnguarda.Name = "btnguarda";
             this.btnguarda.Size = new System.Drawing.Size(75, 23);
             this.btnguarda.TabIndex = 96;
@@ -248,6 +250,7 @@
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.cbDoctor);
             this.groupBox2.Controls.Add(this.btncerrar);
+            this.groupBox2.Controls.Add(this.btnimprime);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(16, 18);
             this.groupBox2.Name = "groupBox2";
@@ -269,7 +272,7 @@
             // 
             this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(559, 198);
+            this.pictureBox1.Location = new System.Drawing.Point(488, 143);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(109, 94);
             this.pictureBox1.TabIndex = 115;
@@ -278,12 +281,24 @@
             // btncerrar
             // 
             this.btncerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btncerrar.Location = new System.Drawing.Point(576, 160);
+            this.btncerrar.Location = new System.Drawing.Point(446, 255);
             this.btncerrar.Name = "btncerrar";
             this.btncerrar.Size = new System.Drawing.Size(75, 23);
             this.btncerrar.TabIndex = 116;
             this.btncerrar.Text = "Cerrar";
             this.btncerrar.UseVisualStyleBackColor = true;
+            this.btncerrar.Click += new System.EventHandler(this.btncerrar_Click);
+            // 
+            // btnimprime
+            // 
+            this.btnimprime.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnimprime.Location = new System.Drawing.Point(358, 255);
+            this.btnimprime.Name = "btnimprime";
+            this.btnimprime.Size = new System.Drawing.Size(75, 23);
+            this.btnimprime.TabIndex = 116;
+            this.btnimprime.Text = "Imprimir";
+            this.btnimprime.UseVisualStyleBackColor = true;
+            this.btnimprime.Click += new System.EventHandler(this.btnimprime_Click);
             // 
             // errorProvider1
             // 
@@ -332,16 +347,17 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textSexo;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textDocumento;
-        private System.Windows.Forms.ComboBox cbDoctor;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btncancela;
         private System.Windows.Forms.Button btnguarda;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button btncerrar;
-        private System.Windows.Forms.DateTimePicker Picker;
+        private System.Windows.Forms.Button btnimprime;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Button btncerrar;
+        private System.Windows.Forms.TextBox textDocumento;
+        private System.Windows.Forms.ComboBox cbDoctor;
+        private System.Windows.Forms.DateTimePicker Picker;
     }
 }

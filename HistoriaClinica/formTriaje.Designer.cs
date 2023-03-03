@@ -54,10 +54,11 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.cbDerivar = new System.Windows.Forms.ComboBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnlimpia = new System.Windows.Forms.Button();
             this.btnguarda = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btncerrar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -185,9 +186,11 @@
             // textPeso
             // 
             this.textPeso.Location = new System.Drawing.Point(331, 219);
+            this.textPeso.MaxLength = 4;
             this.textPeso.Name = "textPeso";
             this.textPeso.Size = new System.Drawing.Size(119, 20);
             this.textPeso.TabIndex = 79;
+            this.textPeso.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textPeso_KeyPress);
             // 
             // label11
             // 
@@ -201,9 +204,11 @@
             // textTemperatura
             // 
             this.textTemperatura.Location = new System.Drawing.Point(186, 219);
+            this.textTemperatura.MaxLength = 4;
             this.textTemperatura.Name = "textTemperatura";
             this.textTemperatura.Size = new System.Drawing.Size(119, 20);
             this.textTemperatura.TabIndex = 77;
+            this.textTemperatura.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textTemperatura_KeyPress);
             // 
             // label12
             // 
@@ -217,9 +222,11 @@
             // textTalla
             // 
             this.textTalla.Location = new System.Drawing.Point(50, 219);
+            this.textTalla.MaxLength = 4;
             this.textTalla.Name = "textTalla";
             this.textTalla.Size = new System.Drawing.Size(115, 20);
             this.textTalla.TabIndex = 75;
+            this.textTalla.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textTalla_KeyPress);
             // 
             // label13
             // 
@@ -233,9 +240,11 @@
             // textPresion
             // 
             this.textPresion.Location = new System.Drawing.Point(476, 219);
+            this.textPresion.MaxLength = 7;
             this.textPresion.Name = "textPresion";
             this.textPresion.Size = new System.Drawing.Size(119, 20);
             this.textPresion.TabIndex = 81;
+            this.textPresion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textPresion_KeyPress);
             // 
             // label5
             // 
@@ -280,20 +289,21 @@
             this.cbDerivar.Size = new System.Drawing.Size(245, 21);
             this.cbDerivar.TabIndex = 84;
             // 
-            // button2
+            // btnlimpia
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(338, 323);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 62;
-            this.button2.Text = "Cancelar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnlimpia.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnlimpia.Location = new System.Drawing.Point(272, 323);
+            this.btnlimpia.Name = "btnlimpia";
+            this.btnlimpia.Size = new System.Drawing.Size(75, 23);
+            this.btnlimpia.TabIndex = 62;
+            this.btnlimpia.Text = "Limpiar";
+            this.btnlimpia.UseVisualStyleBackColor = true;
+            this.btnlimpia.Click += new System.EventHandler(this.btnlimpia_Click);
             // 
             // btnguarda
             // 
             this.btnguarda.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnguarda.Location = new System.Drawing.Point(218, 323);
+            this.btnguarda.Location = new System.Drawing.Point(177, 323);
             this.btnguarda.Name = "btnguarda";
             this.btnguarda.Size = new System.Drawing.Size(75, 23);
             this.btnguarda.TabIndex = 67;
@@ -303,9 +313,10 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btncerrar);
             this.groupBox2.Controls.Add(this.pictureBox1);
             this.groupBox2.Controls.Add(this.btnguarda);
-            this.groupBox2.Controls.Add(this.button2);
+            this.groupBox2.Controls.Add(this.btnlimpia);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(12, 10);
             this.groupBox2.Name = "groupBox2";
@@ -322,6 +333,17 @@
             this.pictureBox1.Size = new System.Drawing.Size(73, 87);
             this.pictureBox1.TabIndex = 68;
             this.pictureBox1.TabStop = false;
+            // 
+            // btncerrar
+            // 
+            this.btncerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btncerrar.Location = new System.Drawing.Point(368, 323);
+            this.btncerrar.Name = "btncerrar";
+            this.btncerrar.Size = new System.Drawing.Size(75, 23);
+            this.btncerrar.TabIndex = 69;
+            this.btncerrar.Text = "Cerrar";
+            this.btncerrar.UseVisualStyleBackColor = true;
+            this.btncerrar.Click += new System.EventHandler(this.btncerrar_Click);
             // 
             // formTriaje
             // 
@@ -395,9 +417,10 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox cbDerivar;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnlimpia;
         private System.Windows.Forms.Button btnguarda;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btncerrar;
     }
 }
