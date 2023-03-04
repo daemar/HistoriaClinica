@@ -30,13 +30,23 @@
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.rConsultaPacienteFecha = new HistoriaClinica.RConsultaPacienteFecha();
             this.spConsultaPacienteFechaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.rConsultaPacienteFecha = new HistoriaClinica.RConsultaPacienteFecha();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.sp_ConsultaPacienteFechaTableAdapter = new HistoriaClinica.RConsultaPacienteFechaTableAdapters.sp_ConsultaPacienteFechaTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.rConsultaPacienteFecha)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spConsultaPacienteFechaBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rConsultaPacienteFecha)).BeginInit();
             this.SuspendLayout();
+            // 
+            // spConsultaPacienteFechaBindingSource
+            // 
+            this.spConsultaPacienteFechaBindingSource.DataMember = "sp_ConsultaPacienteFecha";
+            this.spConsultaPacienteFechaBindingSource.DataSource = this.rConsultaPacienteFecha;
+            // 
+            // rConsultaPacienteFecha
+            // 
+            this.rConsultaPacienteFecha.DataSetName = "RConsultaPacienteFecha";
+            this.rConsultaPacienteFecha.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // reportViewer1
             // 
@@ -48,18 +58,9 @@
             this.reportViewer1.Location = new System.Drawing.Point(0, 0);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
+            this.reportViewer1.ShowExportButton = false;
             this.reportViewer1.Size = new System.Drawing.Size(800, 450);
             this.reportViewer1.TabIndex = 0;
-            // 
-            // rConsultaPacienteFecha
-            // 
-            this.rConsultaPacienteFecha.DataSetName = "RConsultaPacienteFecha";
-            this.rConsultaPacienteFecha.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // spConsultaPacienteFechaBindingSource
-            // 
-            this.spConsultaPacienteFechaBindingSource.DataMember = "sp_ConsultaPacienteFecha";
-            this.spConsultaPacienteFechaBindingSource.DataSource = this.rConsultaPacienteFecha;
             // 
             // sp_ConsultaPacienteFechaTableAdapter
             // 
@@ -74,8 +75,8 @@
             this.Name = "formReportConsultaPaciente";
             this.Text = "formReportConsultaPaciente";
             this.Load += new System.EventHandler(this.formReportConsultaPaciente_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.rConsultaPacienteFecha)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spConsultaPacienteFechaBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rConsultaPacienteFecha)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbDoctor = new System.Windows.Forms.ComboBox();
             this.btncerrar = new System.Windows.Forms.Button();
             this.btnimprime = new System.Windows.Forms.Button();
             this.Picker = new System.Windows.Forms.DateTimePicker();
@@ -38,7 +39,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.cbDoctor = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,10 +57,19 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(411, 202);
+            this.groupBox1.Size = new System.Drawing.Size(396, 202);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Cita por Paciente";
+            this.groupBox1.Text = "Informe médico";
+            // 
+            // cbDoctor
+            // 
+            this.cbDoctor.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbDoctor.FormattingEnabled = true;
+            this.cbDoctor.Location = new System.Drawing.Point(34, 113);
+            this.cbDoctor.Name = "cbDoctor";
+            this.cbDoctor.Size = new System.Drawing.Size(146, 21);
+            this.cbDoctor.TabIndex = 7;
             // 
             // btncerrar
             // 
@@ -152,20 +161,11 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "N° Documento";
             // 
-            // cbDoctor
-            // 
-            this.cbDoctor.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbDoctor.FormattingEnabled = true;
-            this.cbDoctor.Location = new System.Drawing.Point(34, 113);
-            this.cbDoctor.Name = "cbDoctor";
-            this.cbDoctor.Size = new System.Drawing.Size(146, 21);
-            this.cbDoctor.TabIndex = 7;
-            // 
             // formRptConsultaPacienteData
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(432, 224);
+            this.ClientSize = new System.Drawing.Size(421, 224);
             this.Controls.Add(this.groupBox1);
             this.MaximizeBox = false;
             this.Name = "formRptConsultaPacienteData";
